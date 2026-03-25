@@ -1,97 +1,84 @@
 # LLD Interview Practice — Complete Guide
 
-> 20 Low-Level Design problems **ranked by 2026 interview frequency**, with Java implementations, detailed guides, and design pattern explanations.
->
-> ⭐ = Most frequently asked &nbsp; | &nbsp; 🆕 = Newly added
+> **21 Low-Level Design problems** ranked by 2026 interview frequency, with Java implementations, detailed guides, and design pattern explanations.
 
 ---
 
 ## 🚀 How to Run
 
 ```bash
-# Compile everything
 cd src
 javac Main.java
-
-# Run the interactive menu (pick any of the 20 demos)
 java Main
-
-# Or run a specific problem directly
-java -cp . parkinglot.ParkingLotDemo
-java -cp . ridesharing.RideSharingDemo
-java -cp . taskscheduler.TaskSchedulerDemo
 ```
 
 ---
 
-## 📚 All 20 Problems — Ranked by 2026 Interview Importance
+## 📚 Tier 1 — System Design Crossovers (Must Know)
 
-| Rank | Problem | Key Patterns | Guide | Source |
+> Asked at Google, Amazon, Meta, and top startups. These bridge LLD and system design.
+
+| # | Problem | Key Patterns | Guide | Source |
 |---|---|---|---|---|
-| ⭐1 | **LRU Cache** | HashMap + Doubly Linked List | [Guide](docs/01_LRUCache.md) | `src/lrucache/` |
-| ⭐2 | **Rate Limiter** | Strategy (4 algorithms) | [Guide](docs/02_RateLimiter.md) | `src/ratelimiter/` |
-| ⭐3 | **Parking Lot** | Singleton, Strategy | [Guide](docs/03_ParkingLot.md) | `src/parkinglot/` |
-| 🆕4 | **Ride-Sharing (Uber/Ola)** | Strategy, State, Observer | [Guide](docs/04_RideSharing.md) | `src/ridesharing/` |
-| 🆕5 | **Task Scheduler / Thread Pool** | Producer-Consumer, Concurrency | [Guide](docs/05_TaskScheduler.md) | `src/taskscheduler/` |
-| ⭐6 | **Pub-Sub Message Queue** | Observer, Producer-Consumer | [Guide](docs/06_PubSubQueue.md) | `src/pubsub/` |
-| 7 | **Vending Machine** | State Pattern | [Guide](docs/07_VendingMachine.md) | `src/vendingmachine/` |
-| 8 | **BookMyShow** | Concurrency, Atomic Booking | [Guide](docs/08_BookMyShow.md) | `src/bookmyshow/` |
-| 9 | **Notification System** | Observer, Strategy | [Guide](docs/09_NotificationSystem.md) | `src/notification/` |
-| 10 | **Splitwise** | Strategy, Enum | [Guide](docs/10_Splitwise.md) | `src/splitwise/` |
-| 11 | **LFU Cache** | 3 HashMaps + minFreq | [Guide](docs/11_LFUCache.md) | `src/lfucache/` |
-| 12 | **Elevator System** | Strategy, SCAN Algorithm | [Guide](docs/12_ElevatorSystem.md) | `src/elevator/` |
-| 13 | **Logging Framework** | Singleton, Chain of Responsibility | [Guide](docs/13_LoggingFramework.md) | `src/logger/` |
-| 14 | **ATM Machine** | State, Chain of Responsibility | [Guide](docs/14_ATMMachine.md) | `src/atm/` |
-| 15 | **Hotel Booking** | Concurrency, Date Ranges | [Guide](docs/15_HotelBooking.md) | `src/hotel/` |
-| 16 | **Shopping Cart** | Strategy (Pricing/Discounts) | [Guide](docs/16_ShoppingCart.md) | `src/shoppingcart/` |
-| 17 | **Figma (Design Tool)** | Command, Composite, Observer, Prototype | [Guide](docs/17_FigmaDesignTool.md) | `src/figma/` |
-| 18 | **File System** | Composite, Recursion | [Guide](docs/18_FileSystem.md) | `src/filesystem/` |
-| 19 | **Tic-Tac-Toe** | O(1) Win Detection | [Guide](docs/19_TicTacToe.md) | `src/tictactoe/` |
-| 20 | **Snake & Ladder** | OOP, Game Loop, Queue | [Guide](docs/20_SnakeLadder.md) | `src/snakeladder/` |
+| 1 | **Rate Limiter** | Strategy (Token Bucket, Sliding Window) | [Guide](docs/01_RateLimiter.md) | `src/ratelimiter/` |
+| 2 | **Payment Gateway / UPI Switch** | Strategy, State, Chain of Responsibility | [Guide](docs/02_PaymentGateway.md) | `src/paymentgateway/` |
+| 3 | **Ride-Sharing (Uber/Ola)** | Strategy, State, Observer | [Guide](docs/03_RideSharing.md) | `src/ridesharing/` |
+| 4 | **Live Sports Scoreboard** | Observer, Concurrency, Read-Heavy | [Guide](docs/04_LiveScoreboard.md) | `src/scoreboard/` |
+| 5 | **Task Scheduler / Thread Pool** | Producer-Consumer, BlockingQueues | [Guide](docs/05_TaskScheduler.md) | `src/taskscheduler/` |
+| 6 | **Pub-Sub Message Queue** | Observer, Producer-Consumer | [Guide](docs/06_PubSubQueue.md) | `src/pubsub/` |
+| 7 | **BookMyShow** | Concurrency, Atomic Transactions | [Guide](docs/07_BookMyShow.md) | `src/bookmyshow/` |
+| 8 | **Cloud Resource Allocator** | Strategy, Health Check State | [Guide](docs/08_CloudAllocator.md) | `src/cloudresource/` |
+| 9 | **LRU Cache** | HashMap + Doubly Linked List | [Guide](docs/09_LRUCache.md) | `src/lrucache/` |
+| 10 | **LFU Cache** | 3 HashMaps + MinFreq Tracking | [Guide](docs/10_LFUCache.md) | `src/lfucache/` |
+| 11 | **Splitwise** | Strategy, Graph/Math Algorithms | [Guide](docs/11_Splitwise.md) | `src/splitwise/` |
 
-### Why This Ranking?
+## 📚 Tier 2 — Advanced OOP & Modern Architecture
 
-| Tier | Problems | Why |
-|---|---|---|
-| **Tier 1 — Must Know** (1-6) | LRU Cache, Rate Limiter, Parking Lot, Uber, Thread Pool, Pub-Sub | Asked at Google, Amazon, Meta, startups. System design crossover. Concurrency is king in 2026. |
-| **Tier 2 — Frequently Asked** (7-12) | Vending Machine, BookMyShow, Notifications, Splitwise, LFU, Elevator | Classic LLD staples. State Pattern and Observer are tested heavily. |
-| **Tier 3 — Good to Know** (13-18) | Logger, ATM, Hotel, Shopping Cart, Figma, File System | Less frequent but demonstrate specific patterns (CoR, Command, Composite). |
-| **Tier 4 — Basics** (19-20) | Tic-Tac-Toe, Snake & Ladder | OOP warm-up. Rarely asked at senior level, but great for learning. |
+> Tests structural/behavioral patterns, AI pipelines, and media streaming.
 
----
+| # | Problem | Key Patterns | Guide | Source |
+|---|---|---|---|---|
+| 12 | **In-Memory Vector Database** | Strategy (Cosine/Euclidean), KNN Search | [Guide](docs/12_VectorDatabase.md) | `src/vectordb/` |
+| 13 | **LLM Prompt Orchestrator** | Chain of Responsibility, Factory | [Guide](docs/13_LLMOrchestrator.md) | `src/llmorchestrator/` |
+| 14 | **Video Buffer / Segment Manager** | Sliding Window, TreeMap, Eviction | [Guide](docs/14_VideoBuffer.md) | `src/videobuffer/` |
+| 15 | **Logging Framework** | Singleton, Chain of Responsibility | [Guide](docs/15_LoggingFramework.md) | `src/logger/` |
+| 16 | **Elevator System** | Strategy, SCAN Algorithm, State | [Guide](docs/16_ElevatorSystem.md) | `src/elevator/` |
+| 17 | **Vending Machine** | State Pattern, Transition Logic | [Guide](docs/17_VendingMachine.md) | `src/vendingmachine/` |
 
-## 🎯 The 5-Step Framework for ANY LLD Problem
+## 📚 Tier 3 — Foundational Classics
 
-1. **Clarify Requirements** (2-3 min) — Ask questions, narrow scope
-2. **Identify Entities (Nouns)** (2-3 min) — These become classes
-3. **Identify Behaviors (Verbs)** (2 min) — These become methods
-4. **Identify Relationships** (2 min) — HAS-A, IS-A, uses
-5. **Code Bottom-Up** (15-20 min) — Smallest classes first
+> Baseline expectations. Fundamental class hierarchies and standard patterns.
+
+| # | Problem | Key Patterns | Guide | Source |
+|---|---|---|---|---|
+| 18 | **Notification System** | Observer, Strategy (SMS/Email/Push) | [Guide](docs/18_NotificationSystem.md) | `src/notification/` |
+| 19 | **Parking Lot** | Singleton, Strategy (Spot Allocation) | [Guide](docs/19_ParkingLot.md) | `src/parkinglot/` |
+| 20 | **File System** | Composite, Recursion | [Guide](docs/20_FileSystem.md) | `src/filesystem/` |
+| 21 | **Shopping Cart** | Strategy (Pricing), Decorator | [Guide](docs/21_ShoppingCart.md) | `src/shoppingcart/` |
 
 ---
 
 ## 🧩 Design Patterns Cheat Sheet
 
-| Pattern | When to Use | Problems That Use It |
+| Pattern | When to Use | Problems Using It |
 |---|---|---|
-| **Singleton** | Only ONE instance needed | Parking Lot, Logger |
-| **Strategy** | Multiple interchangeable algorithms | Parking Lot, Rate Limiter, Uber, Splitwise, Shopping Cart, Notification |
-| **State** | Object behavior changes with state | Vending Machine, ATM, Uber (Driver states) |
-| **Observer** | Notify multiple objects of changes | Notification System, Uber, Figma, Pub-Sub |
-| **Command** | Undo/redo, operation history | Figma |
-| **Composite** | Tree structures, part-whole hierarchies | Figma (groups), File System |
-| **Chain of Responsibility** | Pass request through handler chain | Logger, ATM (cash dispenser) |
-| **Producer-Consumer** | Decouple task submission from execution | Thread Pool, Pub-Sub |
-| **Prototype** | Clone existing objects | Figma (duplicate shapes) |
+| **Strategy** | Multiple interchangeable algorithms | Rate Limiter, Payment Gateway, Uber, Cloud Allocator, Vector DB, Splitwise, Shopping Cart |
+| **State** | Behavior changes with internal state | Vending Machine, Payment Gateway, Uber (Driver), Cloud (Resource) |
+| **Observer** | Notify subscribers of changes | Scoreboard, Notification, Pub-Sub, Uber |
+| **Chain of Responsibility** | Pipeline of handlers | Payment Gateway (fraud), LLM Orchestrator, Logging |
+| **Singleton** | One global instance | Parking Lot, Logger |
+| **Producer-Consumer** | Decouple submission from execution | Thread Pool, Pub-Sub |
+| **Composite** | Tree part-whole hierarchies | File System |
+| **Factory** | Create objects without specifying class | LLM Provider selection |
 
 ---
 
-## 📖 SOLID Principles Quick Reference
+## 📖 SOLID Principles
 
-| Principle | Meaning | Example in This Repo |
-|---|---|---|
-| **S** — Single Responsibility | One class, one job | ParkingSpot only manages parking, not billing |
-| **O** — Open-Closed | Open for extension, closed for modification | Add new MatchingStrategy without changing RideService |
-| **L** — Liskov Substitution | Subtypes must be substitutable | Any Shape (Rectangle, Circle) works wherever Shape is expected |
-| **I** — Interface Segregation | Don't force unused methods | NotificationChannel has only send() — not a bloated interface |
-| **D** — Dependency Inversion | Depend on abstractions, not concretions | ParkingLot depends on ParkingStrategy interface, not NearestSpotStrategy |
+| Principle | Example in This Repo |
+|---|---|
+| **S** — Single Responsibility | `PaymentMethod` only processes payments, `FraudChecker` only validates |
+| **O** — Open-Closed | Add `WalletPayment` without changing `PaymentGateway` |
+| **L** — Liskov Substitution | Any `SimilarityMetric` works in `VectorDatabase` |
+| **I** — Interface Segregation | `ScoreObserver` has only `onScoreUpdate()` |
+| **D** — Dependency Inversion | `CloudAllocator` depends on `AllocationStrategy` interface, not `LeastLoadedStrategy` |
