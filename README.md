@@ -1,10 +1,28 @@
 # LLD Interview Practice — Complete Guide
 
-> A comprehensive collection of Low-Level Design problems with detailed explanations, design patterns, and Java implementations.
+> 20 Low-Level Design problems with Java implementations, detailed guides, and design pattern explanations.
 
 ---
 
-## 📚 Problems & Guides
+## 🚀 How to Run
+
+```bash
+# Compile everything
+cd src
+javac Main.java
+
+# Run the interactive menu (pick any of the 20 demos)
+java Main
+
+# Or run a specific problem directly
+java -cp . parkinglot.ParkingLotDemo
+java -cp . vendingmachine.VendingMachineDemo
+java -cp . ratelimiter.RateLimiterDemo
+```
+
+---
+
+## 📚 All 20 Problems with Guides
 
 | # | Problem | Key Patterns | Guide | Source |
 |---|---|---|---|---|
@@ -15,26 +33,19 @@
 | 5 | **Notification System** | Observer, Strategy | [Guide](docs/05_NotificationSystem.md) | `src/notification/` |
 | 6 | **Splitwise** | Strategy, Enum | [Guide](docs/06_Splitwise.md) | `src/splitwise/` |
 | 7 | **Figma (Design Tool)** | Command, Composite, Observer, Prototype | [Guide](docs/07_FigmaDesignTool.md) | `src/figma/` |
-| 8 | **Rate Limiter** | Strategy | [Guide](docs/08_RateLimiter.md) | `src/ratelimiter/` |
-
----
-
-## 🏗️ Also Implemented (code in `src/`)
-
-| Problem | Source |
-|---|---|
-| Elevator System | `src/elevator/` |
-| Chess Game | `src/chess/` |
-| Tic Tac Toe | `src/tictactoe/` |
-| Snake & Ladder | `src/snakeladder/` |
-| Hotel Reservation | `src/hotel/` |
-| BookMyShow | `src/bookmyshow/` |
-| Library Management | `src/library/` |
-| Shopping Cart | `src/shoppingcart/` |
-| ATM Machine | `src/atm/` |
-| File System | `src/filesystem/` |
-| Pub-Sub System | `src/pubsub/` |
-| Logger | `src/logger/` |
+| 8 | **Rate Limiter** | Strategy (4 algorithms) | [Guide](docs/08_RateLimiter.md) | `src/ratelimiter/` |
+| 9 | **Elevator System** | Strategy, SCAN Algorithm | [Guide](docs/09_ElevatorSystem.md) | `src/elevator/` |
+| 10 | **Tic-Tac-Toe** | O(1) Win Detection | [Guide](docs/10_TicTacToe.md) | `src/tictactoe/` |
+| 11 | **BookMyShow** | Concurrency, Atomic Booking | [Guide](docs/11_BookMyShow.md) | `src/bookmyshow/` |
+| 12 | **Snake & Ladder** | OOP, Game Loop, Queue | [Guide](docs/12_SnakeLadder.md) | `src/snakeladder/` |
+| 13 | **Library Management** | CRUD, Search, Fines | [Guide](docs/13_LibraryManagement.md) | `src/library/` |
+| 14 | **Shopping Cart** | Strategy (Pricing/Discounts) | [Guide](docs/14_ShoppingCart.md) | `src/shoppingcart/` |
+| 15 | **Chess** | Polymorphism, Piece Hierarchy | [Guide](docs/15_Chess.md) | `src/chess/` |
+| 16 | **Logging Framework** | Singleton, Chain of Responsibility | [Guide](docs/16_LoggingFramework.md) | `src/logger/` |
+| 17 | **Pub-Sub Queue** | Observer, Producer-Consumer | [Guide](docs/17_PubSubQueue.md) | `src/pubsub/` |
+| 18 | **ATM Machine** | State, Chain of Responsibility | [Guide](docs/18_ATMMachine.md) | `src/atm/` |
+| 19 | **Hotel Booking** | Concurrency, Date Ranges | [Guide](docs/19_HotelBooking.md) | `src/hotel/` |
+| 20 | **File System** | Composite, Recursion | [Guide](docs/20_FileSystem.md) | `src/filesystem/` |
 
 ---
 
@@ -50,14 +61,15 @@
 
 ## 🧩 Design Patterns Cheat Sheet
 
-| Pattern | When to Use | LLD Problems That Use It |
+| Pattern | When to Use | Problems That Use It |
 |---|---|---|
 | **Singleton** | Only ONE instance needed | Parking Lot, Logger |
-| **Strategy** | Multiple interchangeable algorithms | Parking Lot (spot-finding), Rate Limiter, Splitwise (split types), Notification (channels) |
+| **Strategy** | Multiple interchangeable algorithms | Parking Lot, Rate Limiter, Splitwise, Shopping Cart, Notification |
 | **State** | Object behavior changes with state | Vending Machine, ATM, Elevator |
-| **Observer** | Notify multiple objects of changes | Notification System, Figma (collaboration), Pub-Sub |
-| **Command** | Undo/redo, operation history | Figma (undo/redo) |
-| **Composite** | Tree structures, part-whole hierarchies | Figma (shape groups), File System |
+| **Observer** | Notify multiple objects of changes | Notification System, Figma, Pub-Sub |
+| **Command** | Undo/redo, operation history | Figma |
+| **Composite** | Tree structures, part-whole hierarchies | Figma (groups), File System, Chess (board) |
+| **Chain of Responsibility** | Pass request through handler chain | Logger, ATM (cash dispenser) |
 | **Factory** | Object creation without specifying exact class | Vehicle creation, Shape creation |
 | **Prototype** | Clone existing objects | Figma (duplicate shapes) |
 
@@ -72,4 +84,3 @@
 | **L** — Liskov Substitution | Subtypes must be substitutable | Any Shape (Rectangle, Circle) works wherever Shape is expected |
 | **I** — Interface Segregation | Don't force unused methods | NotificationChannel has only send() — not a bloated interface |
 | **D** — Dependency Inversion | Depend on abstractions, not concretions | ParkingLot depends on ParkingStrategy interface, not NearestSpotStrategy |
-

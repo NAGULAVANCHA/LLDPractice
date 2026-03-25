@@ -3,6 +3,7 @@
 
 # IDE module files
 *.iml
+.idea/
 
 ### IntelliJ IDEA ###
 out/
